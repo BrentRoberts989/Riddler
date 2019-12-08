@@ -16,7 +16,7 @@ public class Riddler120719 {
     */
     public static void main(String[] args) {
         try {
-            runAvgPresses((int)(Math.pow(10, 8)));
+            runAvgPresses((int)(Math.pow(10, 10)));
         } catch(Exception e) {
             System.out.println("Broke already? Here is the error:\n");
         }
@@ -86,7 +86,8 @@ public class Riddler120719 {
      * Function to print pretty numbers
      */
     private static void runAvgPresses(int n) {
-        int result = 0, run = 0;
+        int  run = 0;
+        double result = 0;
         System.out.println("\n");
         for (int i = 1; i<= n; i++) {
             run  = avgPresses();
@@ -94,11 +95,11 @@ public class Riddler120719 {
             /*if (i % 20 == 0) {
                 System.out.println();
             }*/
-            if (i % 1000 == 0) {
+            if (i % 10000 == 0) {
                 System.out.println(i);
             }
-            result += run;
+            result += (double)run;
         }
-        System.out.println("\n\nn for this run was: "+n+"\nThe average presses was: "+result/n);
+        System.out.println("\n\nn for this run was: "+n+"\nThe average presses was: "+result/n+"\ntotal number of presses simulated was:"+result);
     }
 }
