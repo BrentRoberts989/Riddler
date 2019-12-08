@@ -1,3 +1,5 @@
+import java.java.math.random;
+
 /**
  * A class to solve the 12/7/2019 Riddler Classic Problem
  * 
@@ -5,6 +7,7 @@
  */
 public class Riddler120719 {
 
+    private final static int AVGPRESS = 49;
 
     /**
      * Guess what this does?
@@ -12,7 +15,11 @@ public class Riddler120719 {
      * @param args Not used
     */
     public static void main(String[] args) {
-        System.out.println(avgRand());
+        try {
+            runAvgPresses((int)(Math.pow(10, 8)));
+        } catch(Exception e) {
+            System.out.println("Broke already? Here is the error:\n");
+        }
     }
 
 
@@ -26,8 +33,17 @@ public class Riddler120719 {
     }
 
     /**
+     * Guess
+     * 
+     * @return A random int from 1 to 100
+     */
+    private static int rand100() {
+        return (int)(100 *Math.random()+1);
+    }
+
+    /**
      * Calculates the average button presses from 42 of a random number
-     * (results in 49)
+     * @return (results in 49)
      */
     private static int avgRand() {
         int result = 0;
@@ -39,8 +55,50 @@ public class Riddler120719 {
 
     /**
      * Code to be run to calculate average number of presses
+     * 
+     * @return resulting average of a single run
      */
     private static int avgPresses() {
+        boolean not42 = true;
+        int song = rand100();
+        int buttonPresses = 0;
+        while (not42){
+            if (song == 42) {
+                not42 = false; //looks prettier with these.
+                return buttonPresses;
+            } else if (presses(song) <= AVGPRESS ) {
+                not42 = false;
+                return buttonPresses + presses(song); 
+            } else {
+                //System.out.println("Random roll");
+                buttonPresses +=1;
+                song = rand100();
+                if (buttonPresses >= 100) { //escape hatch
+                    System.out.println("Used Escape hatch");
+                    return buttonPresses;
+                }
+            }
+        }
+        return buttonPresses;
+    }
 
+    /**
+     * Function to print pretty numbers
+     */
+    private static void runAvgPresses(int n) {
+        int result = 0, run = 0;
+        System.out.println("\n");
+        for (int i = 1; i<= n; i++) {
+            run  = avgPresses();
+            //System.out.print(run+" "); Wanted to speed up
+            /*if (i % 20 == 0) {
+                System.out.println();
+            }*/
+            if (i % 1000 == 0) {
+                System.out.println(i);
+            }
+            result += run;
+        }
+        System.out.println("\n\nn for this run was: "+n+"\nThe average presses was: "+result/n);
     }
 }
