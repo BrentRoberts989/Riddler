@@ -47,7 +47,7 @@ public class Riddler120719 {
      */
     private static int avgRand() {
         int result = 0;
-        for (double i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 100; i++) {
             result += presses(i);
         }
         return result/100;
