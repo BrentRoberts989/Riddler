@@ -16,7 +16,7 @@ public class Riddler120719 {
     */
     public static void main(String[] args) {
         try {
-            runAvgPresses((int)(Math.pow(10, 10)));
+            runAvgPresses(Math.pow(10, 10));
         } catch(Exception e) {
             System.out.println("Broke already? Here is the error:\n");
         }
@@ -47,7 +47,7 @@ public class Riddler120719 {
      */
     private static int avgRand() {
         int result = 0;
-        for (int i = 1; i <= 100; i++) {
+        for (double i = 1; i <= 100; i++) {
             result += presses(i);
         }
         return result/100;
@@ -85,17 +85,17 @@ public class Riddler120719 {
     /**
      * Function to print pretty numbers
      */
-    private static void runAvgPresses(int n) {
+    private static void runAvgPresses(double n) {
         int  run = 0;
         double result = 0;
         System.out.println("\n");
-        for (int i = 1; i<= n; i++) {
+        for (double i = 1; i<= n; i++) {
             run  = avgPresses();
             //System.out.print(run+" "); Wanted to speed up
             /*if (i % 20 == 0) {
                 System.out.println();
             }*/
-            if (i % 10000 == 0) {
+            if (i % 10000000 == 0) {
                 System.out.println(i);
             }
             result += (double)run;
