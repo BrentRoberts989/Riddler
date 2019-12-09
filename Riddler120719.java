@@ -3,6 +3,8 @@ import java.java.math.random;
 /**
  * A class to solve the 12/7/2019 Riddler Classic Problem
  * 
+ * Average+Evidence: https://docs.google.com/spreadsheets/d/1CXpSe_QBjcGc9ZgU9Q7whlmJjvdHIhqmhTbtq7cApIQ/edit?usp=sharing
+ * 
  * @author Brent Roberts
  */
 public class Riddler120719 {
@@ -16,7 +18,7 @@ public class Riddler120719 {
     */
     public static void main(String[] args) {
         try {
-            runAvgPresses(Math.pow(10, 10));
+            runAvgPresses(Math.pow(10, 11));
         } catch(Exception e) {
             System.out.println("Broke already? Here is the error:\n");
         }
